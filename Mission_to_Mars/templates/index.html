@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <body>
+        <div class="container-fluid">
+          <div class="h-100 p-5 border rounded-3 text-center" style="background:rgba(226, 221, 219, 0.4);">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+    </div>
+
+    <div class="row border rounded p-5" style="margin:5px; background:rgba(211, 75, 12, 0.4);">
+        <div class="col-lg-6 col-m-6 ">
+          <div class="row">
+            <div>
+                <h2>Latest Mars News:</h2>
+            </div>
+            <div class="w-100"></div>
+            <div>
+                <h5>{{mars.latest_title}}</h5>
+                <p>{{mars.latest_desc}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+                <h2>Featured Mars Image</h2>
+                <div style="max-width:75%; padding-right: 10px;">
+                    <img src="{{mars.image_mars}}"  class="img-fluid img-thumbnail" alt="Featured Mars Image">
+                  </div>
+                </div>
+              </div>
+
+        <div class="col-lg-6 col-m-6">
+         <div class="row">
+          <div class="col-12">
+            <div><h2>Mars Facts</h2></div>
+                    <p> {{mars.facts_table | safe}} </p>
+                </div>
+             </div>
+
+             <div class="row">
+                <div class="col-12">
+                <h2>Mars Hemispheres</h2>
+                <div class="row">
+                    <div class="col-lg-3">
+
+         {% for picture in mars.hemisphere_img_url %}
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{picture.link}}" width="600" height="600" alt="Mars Image">
+                <div class="card-body">
+                    <p class="card-text"> {{picture.title}}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+</body>
+
+</html>
